@@ -39,6 +39,7 @@ This repository contains the source code for the Crypto Tracker, an iOS app that
 
 3.  Build and run:
 
+    *   add netfox as a package dependency to your Xcode project from https://github.com/kasketis/netfox.
     *   Select a simulator or connected device in Xcode.
     *   Press the Run button to launch the app.
 
