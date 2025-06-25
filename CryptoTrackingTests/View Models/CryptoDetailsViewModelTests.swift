@@ -20,23 +20,23 @@ final class CryptoDetailsViewModelTests: XCTestCase {
         super.setUp()
         cancellables = Set<AnyCancellable>()
     }
-
+    
     override func tearDown() {
         sut = nil
         mockFetchDetailUseCase = nil
         cancellables = nil
         super.tearDown()
     }
-
+    
     func test_fetchData_whenSuccess_shouldUpdateStateToSuccess() async {
         // Given
         mockFetchDetailUseCase = MockFetchDetailUseCase()
         mockFetchDetailUseCase.result = .success(tickSample)
         
         sut = CryptoDetailsViewModel(detailsUseCase: mockFetchDetailUseCase, cryptoID: "BTC_USDD")
-
+        
         let exp = expectation(description: #function)
-
+        
         sut.$state
             .sink { state in
                 if case .success(let model) = state {
@@ -47,17 +47,17 @@ final class CryptoDetailsViewModelTests: XCTestCase {
                 }
             }
             .store(in: &cancellables)
-
+        
         await fulfillment(of: [exp], timeout: 1)
     }
-
+    
     func test_fetchData_withErrorResponse_shouldUpdateStateToError() async {
         // Given
         let exp = expectation(description: #function)
         mockFetchDetailUseCase = MockFetchDetailUseCase()
         mockFetchDetailUseCase.result = .failure(.decodingFailed)
         sut = CryptoDetailsViewModel(detailsUseCase: mockFetchDetailUseCase, cryptoID: "BTC_USDD")
-
+        
         
         // when
         sut.$state.sink { state in
@@ -70,37 +70,4 @@ final class CryptoDetailsViewModelTests: XCTestCase {
         // Then
         XCTAssertEqual(sut.state,  .error(AppError.decodingFailed.errorDescription))
     }
-    
-//    func test_fetchData_whenFailure_shouldUpdateStateToFailure() async {
-//        // Given
-//        let sampleError = AppError.networkError("Network failure")
-//        mockFetchDetailUseCase = MockFetchDetailUseCase()
-//        mockFetchDetailUseCase.result = .failure(sampleError)
-//        
-//        sut = CryptoDetailsViewModel(detailsUseCase: mockFetchDetailUseCase, cryptoID: "BTC")
-//        
-//        let exp = expectation(description: #function)
-//        
-//        sut.$state
-//            .sink { state in
-//                if case .failure(let error) = state {
-//                    // When
-//                    XCTAssertEqual(error.localizedDescription, "Network failure")
-//                    exp.fulfill()
-//                }
-//            }
-//            .store(in: &cancellables)
-//        
-//        await fulfillment(of: [exp], timeout: 1)
-//    }
-
-//    func test_initialState_shouldBeLoading() {
-//        // Given
-//        mockFetchDetailUseCase = MockFetchDetailUseCase()
-//        mockFetchDetailUseCase.result = .success(tickSample)
-//        sut = CryptoDetailsViewModel(detailsUseCase: mockFetchDetailUseCase, cryptoID: "BTC")
-//        
-//        // When & Then
-//        XCTAssertEqual(sut.state, .loading)
-//    }
 }

@@ -68,7 +68,7 @@ class BaseCryptoViewModel: BaseViewModel {
     
     func fetchData() {
         state = .loading
-        Task {
+        Task { @MainActor in
             do {
                 let cryptos = try await fetchUseCase.execute()
                 self.data = cryptos
