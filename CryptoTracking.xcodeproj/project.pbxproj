@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1E029C012E0C8E080097052F /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = 1E029C002E0C8E080097052F /* netfox */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1E0299C62E0C89270097052F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E029C012E0C8E080097052F /* netfox in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 				1E0299B22E0C89250097052F /* CryptoTracking */,
 				1E0299C82E0C89270097052F /* CryptoTrackingTests */,
 				1E0299D22E0C89270097052F /* CryptoTrackingUITests */,
+				1E029BFF2E0C8E080097052F /* Frameworks */,
 				1E0299B12E0C89250097052F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +96,13 @@
 				1E0299CF2E0C89270097052F /* CryptoTrackingUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1E029BFF2E0C8E080097052F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -111,8 +124,6 @@
 				1E0299B22E0C89250097052F /* CryptoTracking */,
 			);
 			name = CryptoTracking;
-			packageProductDependencies = (
-			);
 			productName = CryptoTracking;
 			productReference = 1E0299B02E0C89250097052F /* CryptoTracking.app */;
 			productType = "com.apple.product-type.application";
@@ -134,8 +145,6 @@
 				1E0299C82E0C89270097052F /* CryptoTrackingTests */,
 			);
 			name = CryptoTrackingTests;
-			packageProductDependencies = (
-			);
 			productName = CryptoTrackingTests;
 			productReference = 1E0299C52E0C89270097052F /* CryptoTrackingTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -157,8 +166,6 @@
 				1E0299D22E0C89270097052F /* CryptoTrackingUITests */,
 			);
 			name = CryptoTrackingUITests;
-			packageProductDependencies = (
-			);
 			productName = CryptoTrackingUITests;
 			productReference = 1E0299CF2E0C89270097052F /* CryptoTrackingUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -195,6 +202,9 @@
 			);
 			mainGroup = 1E0299A72E0C89250097052F;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1E029B722E0C8DBB0097052F /* XCRemoteSwiftPackageReference "netfox" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1E0299B12E0C89250097052F /* Products */;
 			projectDirPath = "";
@@ -558,6 +568,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1E029B722E0C8DBB0097052F /* XCRemoteSwiftPackageReference "netfox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kasketis/netfox";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.21.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1E029C002E0C8E080097052F /* netfox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E029B722E0C8DBB0097052F /* XCRemoteSwiftPackageReference "netfox" */;
+			productName = netfox;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1E0299A82E0C89250097052F /* Project object */;
 }
